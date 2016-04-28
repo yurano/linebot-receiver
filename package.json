@@ -1,0 +1,22 @@
+{
+  "name": "linebot-receiver",
+  "version": "1.0.0",
+  "description": "A function for AWS Lambda that receives messages from LINE BOT API and publish to AWS SNS topics.",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha",
+    "build": "node scripts/build.js"
+  },
+  "author": "yurano <y-urano@kitadenshi.co.jp>",
+  "license": "MIT",
+  "devDependencies": {
+    "jshint": "^2.9.2",
+    "mocha": "^2.4.5",
+    "should": "^8.3.1",
+    "aws-sdk": "2.2.32"
+  },
+  "jshintConfig": {
+    "esversion": 6,
+    "node": true
+  }
+}
