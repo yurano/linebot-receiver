@@ -1,8 +1,14 @@
 'use strict';
 
 const crypto = require('crypto');
+const util = require('util');
 const AWS = require('aws-sdk');
 const CONFIG = require('./config');
+
+const DEBUG_LOG = 'debug';
+const debuglog = util.debuglog(DEBUG_LOG);
+
+process.env.NODE_DEBUG = DEBUG_LOG;
 
 const CHANNEL_SECRET = CONFIG.channelSecret;
 const SIGNATURE_HEADER = CONFIG.signatureHeader || "X-Line-ChannelSignature";
@@ -23,10 +29,10 @@ exports.handler = (event, context, callback) => {
   // publish
   if (validation) {
     let params = {};
-    params.MessageStructure = 'json';
     params.Message = bodyString;
     params.Subject = CONFIG.messageSubject || 'Receiving messages from LINE BOT API';
     params.TopicArn = CONFIG.topicArn;
+
 
     let sns = new AWS.SNS({'apiVersion': '2010-03-31'});
     sns.publish(params, (err, data) => {
