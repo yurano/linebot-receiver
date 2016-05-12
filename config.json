@@ -1,3 +1,6 @@
 {
-  
+  "channelSecret": "your channnel secret",
+  "signatureHeader": "X-Line-ChannelSignature",
+  "messageSubject": "Receiving messages from LINE BOT API",
+  "topicArn": "your AWS SNS topic ARN"
 }
